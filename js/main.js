@@ -15,7 +15,6 @@ document.addEventListener('DOMContentLoaded', () => {
     gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
     
     // Inicializar Lenis para scroll suave
-    initSmoothScroll();
     
     // Inicializar loader
     initLoader();
@@ -34,29 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // Função para inicializar o scroll suave com Lenis
-function initSmoothScroll() {
-    const lenis = new Lenis({
-      duration: 1.2, // Torna o scroll mais suave (pode ajustar entre 0.8 - 1.5)
-      easing: t => t, // Easing linear é mais natural
-      smooth: true,
-      mouseMultiplier: 1.2, // Mais responsivo ao scroll do mouse
-      smoothTouch: true,
-      touchMultiplier: 1.2,
-      infinite: false
-    });
-  
-    function raf(time) {
-      lenis.raf(time);
-      requestAnimationFrame(raf);
-    }
-  
-    requestAnimationFrame(raf);
-  
-    window.addEventListener('resize', () => {
-      lenis.resize();
-    });
-  
-    window.lenis = lenis;
+
   
     // Animação suave nos links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -73,7 +50,7 @@ function initSmoothScroll() {
         });
       });
     });
-  }
+  
   
     
     // Atualizar o Lenis quando a janela for redimensionada
@@ -166,14 +143,7 @@ function initNavigation() {
     const navMenu = document.querySelector('.nav-menu');
     const navLinks = document.querySelectorAll('.nav-menu a');
     
-    // Adicionar classe 'scrolled' ao header quando rolar a página
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 50) {
-            header.classList.add('scrolled');
-        } else {
-            header.classList.remove('scrolled');
-        }
-    });
+    
     
     // Toggle menu mobile
     menuToggle.addEventListener('click', () => {
