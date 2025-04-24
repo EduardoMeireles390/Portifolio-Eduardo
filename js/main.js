@@ -36,25 +36,45 @@ document.addEventListener('DOMContentLoaded', () => {
 // Função para inicializar o scroll suave com Lenis
 function initSmoothScroll() {
     const lenis = new Lenis({
-        duration: 0.8,           // Reduzido de 1.2 para 0.8 para tornar a rolagem mais rápida
-        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-        direction: 'vertical',
-        gestureDirection: 'vertical',
-        smooth: true,
-        mouseMultiplier: 0.8,    // Reduzido de 1 para 0.8 para melhor controle
-        smoothTouch: true,       // Alterado para true para melhorar a experiência em dispositivos touch
-        touchMultiplier: 1.5,    // Reduzido de 2 para 1.5 para melhor controle em dispositivos touch
-        infinite: false,
-        wheelEventsTarget: document.body // Definir o alvo dos eventos de roda do mouse
+      duration: 1.2, // Torna o scroll mais suave (pode ajustar entre 0.8 - 1.5)
+      easing: t => t, // Easing linear é mais natural
+      smooth: true,
+      mouseMultiplier: 1.2, // Mais responsivo ao scroll do mouse
+      smoothTouch: true,
+      touchMultiplier: 1.2,
+      infinite: false
     });
-    
-    // Integração do Lenis com o GSAP
+  
     function raf(time) {
-        lenis.raf(time);
-        requestAnimationFrame(raf);
+      lenis.raf(time);
+      requestAnimationFrame(raf);
     }
-    
+  
     requestAnimationFrame(raf);
+  
+    window.addEventListener('resize', () => {
+      lenis.resize();
+    });
+  
+    window.lenis = lenis;
+  
+    // Animação suave nos links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href');
+        const targetElement = document.querySelector(targetId);
+        if (!targetElement) return;
+  
+        lenis.scrollTo(targetElement, {
+          offset: -80,
+          duration: 1,
+          easing: t => t
+        });
+      });
+    });
+  }
+  
     
     // Atualizar o Lenis quando a janela for redimensionada
     window.addEventListener('resize', () => {
@@ -105,7 +125,7 @@ function initSmoothScroll() {
             }
         });
     });
-}
+
 
 // Função para inicializar o loader
 function initLoader() {
