@@ -1,0 +1,17 @@
+Paleta de Cores para o Portfólio de Eduardo Meireles
+
+Cores Principais (Tons de Azul):
+- Azul Escuro: #0A2647 - Para fundos e elementos de destaque
+- Azul Médio: #144272 - Para cabeçalhos e elementos importantes
+- Azul Claro: #205295 - Para elementos interativos e destaques
+- Azul Muito Claro: #2C74B3 - Para botões e elementos de ação
+
+Cores Complementares:
+- Branco: #FFFFFF - Para textos sobre fundos escuros e áreas de conteúdo
+- Cinza Claro: #F5F5F5 - Para fundos alternativos e separação de seções
+- Cinza Médio: #CCCCCC - Para bordas e elementos secundários
+- Preto: #000000 - Para textos principais sobre fundos claros
+
+Cores de Destaque:
+- Azul Brilhante: #4DA9FF - Para elementos de destaque e hover
+- Azul Turquesa: #00B4D8 - Para elementos especiais e ícones
