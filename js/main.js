@@ -32,44 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
     animateExperiencia();
 });
 
-// Função para inicializar o scroll suave com Lenis
 
-  
-    // Animação suave nos links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const targetId = this.getAttribute('href');
-        const targetElement = document.querySelector(targetId);
-        if (!targetElement) return;
-  
-        lenis.scrollTo(targetElement, {
-          offset: -80,
-          duration: 1,
-          easing: t => t
-        });
-      });
-    });
-  
-  
-    
-    // Atualizar o Lenis quando a janela for redimensionada
-    window.addEventListener('resize', () => {
-        lenis.resize();
-    });
-    
-    // Integração com ScrollTrigger
-    lenis.on('scroll', ScrollTrigger.update);
-    
-    gsap.ticker.add((time) => {
-        lenis.raf(time * 1000);
-    });
-    
-    gsap.ticker.lagSmoothing(0);
-    
-    // Adicionar método para parar o scroll quando necessário
-    window.lenis = lenis;
-    
     // Melhorar a navegação por âncoras
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
@@ -143,7 +106,14 @@ function initNavigation() {
     const navMenu = document.querySelector('.nav-menu');
     const navLinks = document.querySelectorAll('.nav-menu a');
     
-    
+    // Adicionar classe 'scrolled' ao header quando rolar a página
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) {
+            header.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
+        }
+    });
     
     // Toggle menu mobile
     menuToggle.addEventListener('click', () => {

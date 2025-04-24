@@ -148,63 +148,66 @@ button, input, textarea {
 }
 
 /* ===== LOADER ===== */
+/* Loader geral */
 .loader {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: var(--azul-escuro);
+    background-color: #0A2647; /* azul escuro */
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     z-index: 9999;
-}
-
-.loader-content {
-    text-align: center;
-}
-
-.loader-logo {
-    font-size: 5rem;
-    font-weight: 700;
-    color: var(--branco);
-    margin-bottom: 2rem;
-    letter-spacing: 2px;
-}
-
-.loader-bar {
-    width: 200px;
-    height: 4px;
-    background-color: rgba(255, 255, 255, 0.2);
-    border-radius: 2px;
-    overflow: hidden;
-    position: relative;
-}
-
-.loader-bar::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 0;
-    height: 100%;
-    background-color: var(--azul-muito-claro);
-    animation: loading 2s ease infinite;
-}
-
-@keyframes loading {
-    0% {
-        width: 0;
+  }
+  
+  /* Animação em círculo */
+  .loader-ring {
+    width: 60px;
+    height: 60px;
+    border: 6px solid rgba(255, 255, 255, 0.2);
+    border-top-color: #2C74B3;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-bottom: 20px;
+  }
+  
+  /* Texto */
+  .loader-text {
+    color: #ffffff;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.6rem;
+    letter-spacing: 1px;
+    opacity: 0.8;
+  }
+  
+  /* Animação de rotação */
+  @keyframes spin {
+    to {
+      transform: rotate(360deg);
     }
-    50% {
-        width: 100%;
-    }
-    100% {
-        width: 0;
-    }
-}
-
+  }
+  
+  
+  /* Loader animations */
+  @keyframes loadingBar {
+    0% { width: 0%; }
+    50% { width: 100%; }
+    100% { width: 0%; }
+  }
+  
+  @keyframes scaleIn {
+    0% { transform: scale(0.95); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  
 /* ===== HEADER ===== */
 .header {
     position: fixed;
