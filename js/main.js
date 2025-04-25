@@ -622,4 +622,48 @@ function initContactForm() {
       });
     }
   }
+  document.addEventListener("DOMContentLoaded", () => {
+    const titles = [
+      "Analista de Projetos",
+      "Project Manager",
+      "Product Owner",
+      "Analista de Produtos"
+    ];
   
+    const element = document.getElementById("typewriter");
+    let currentIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+    let typingSpeed = 100;
+    let deletingSpeed = 50;
+    let pauseTime = 1500;
+  
+    function typeEffect() {
+      const currentTitle = titles[currentIndex];
+      const visibleText = currentTitle.substring(0, charIndex);
+  
+      element.textContent = visibleText;
+      element.style.width = `${visibleText.length}ch`;
+  
+      if (!isDeleting && charIndex < currentTitle.length) {
+        charIndex++;
+        setTimeout(typeEffect, typingSpeed);
+      } else if (isDeleting && charIndex > 0) {
+        charIndex--;
+        setTimeout(typeEffect, deletingSpeed);
+      } else {
+        if (!isDeleting) {
+          isDeleting = true;
+          setTimeout(typeEffect, pauseTime); // Pausa antes de apagar
+        } else {
+          isDeleting = false;
+          currentIndex = (currentIndex + 1) % titles.length;
+          setTimeout(typeEffect, 300); // Pequena pausa antes de escrever a próxima
+        }
+      }
+    }
+  
+    typeEffect();
+  });
+  
+  element.style.width = `${visibleText.length}ch`;

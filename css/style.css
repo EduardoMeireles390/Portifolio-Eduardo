@@ -389,6 +389,16 @@ button, input, textarea {
     }
 }
 
+.typewriter{
+    display: inline-block;
+    font-size: 2rem;
+    font-weight: 600;
+    color: white;
+    white-space: nowrap;
+    overflow: hidden;
+    animation: blink 0.7s step-end infinite;
+}
+
 .scroll-indicator {
     position: absolute;
     bottom: 50px;
@@ -419,6 +429,7 @@ button, input, textarea {
     transform: translateX(-50%);
     animation: scroll 1.5s ease infinite;
 }
+
 
 @keyframes scroll {
     0% {
@@ -454,6 +465,7 @@ button, input, textarea {
     animation-delay: 0.4s;
 }
 
+  
 @keyframes arrow {
     0% {
         opacity: 0;
@@ -1234,6 +1246,11 @@ button, input, textarea {
     .footer-nav ul {
         flex-wrap: wrap;
         justify-content: center;
+    }
+    .typewriter{
+        align-items: center;
+        text-align: center;
+        width: 200px;
     }
 }
 
