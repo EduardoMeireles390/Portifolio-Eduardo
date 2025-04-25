@@ -816,6 +816,7 @@ button, input, textarea {
 .certificacoes {
     padding: var(--section-padding);
     background-color: var(--branco);
+    margin-top: -2%;
 }
 
 .certificacoes-content {
@@ -985,6 +986,7 @@ button, input, textarea {
 .contato {
     padding: var(--section-padding);
     background-color: var(--branco);
+    margin-top: -10%;
 }
 
 .contato-content {
@@ -1276,7 +1278,9 @@ button, input, textarea {
     .projetos-content {
         grid-template-columns: 1fr;
     }
-    
+    .contato{
+        margin-top: -25%;
+    }
     .contato-item {
         flex-direction: column;
         text-align: center;
